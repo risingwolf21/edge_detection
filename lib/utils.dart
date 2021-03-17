@@ -1,4 +1,5 @@
 
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:edge_detection/rgba.dart';
@@ -23,10 +24,10 @@ int clamp(int x, int a, int b) => x.clamp(a, b).toInt();
 int clamp255(int x) => x.clamp(0, 255).toInt();
 
 RGBA extractChannel(int p) => new RGBA(
-  b: p & 65535,
-  g: (p >> 16) & 65535,
-  r: (p >> 32) & 65535,
-  a: (p >> 48) & 65535,
+  b: p & 255,
+  g: (p >> 8) & 255,
+  r: (p >> 16) & 255,
+  a: (p >> 24) & 255,
 );
 
 grayscale(Uint32List image) {

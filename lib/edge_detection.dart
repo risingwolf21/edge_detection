@@ -3,7 +3,6 @@ library edge_detection;
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
-
 import 'package:edge_detection/constants.dart';
 import 'package:edge_detection/utils.dart';
 import 'package:flutter/cupertino.dart';
