@@ -14,7 +14,7 @@ import 'package:image/image.dart' as img;
 void main() async {
   var file = File("temp.png");
   
-  img.Image edgeDetected = EdgeDetector.applySobelOperator(file);
+  img.Image edgeDetected = EdgeDetector().applySobelOperator(file);
   file.writeAsBytes(img.encodePng(image));
   
   // display the changed Image as Widget:
