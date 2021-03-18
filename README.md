@@ -12,13 +12,19 @@ import 'dart:io';
 import 'package:image/image.dart' as img;
 
 void main() async {
-  var file = File("temp.png");
-  
-  img.Image edgeDetected = EdgeDetector().applySobelOperator(file);
-  file.writeAsBytes(img.encodePng(edgeDetected));
-  
-  // display the changed Image as Widget:
-  // Image.file(file);
+
+  // Read an image from file
+  final imageFile = File("test.png");
+
+  //Transfrom the Image and get the Result
+  final result = await det.applySobelOnFile(imageFile);
+
+  //Write result back to the original File
+  imageFile.writeAsBytes(img.encodePng(result));
+
+
+  //Display image as Widget
+  // Image.file(imageFile)
 }
 ```
 Original Image             |  Applied Sobel-Operator

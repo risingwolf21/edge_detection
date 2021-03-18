@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:image/image.dart' as img;
-import 'package:image_edge_detection/edge_detection.dart' as det;
+import 'package:image_edge_detection/functions.dart' as det;
 
 void main() async {
 
@@ -8,7 +8,7 @@ void main() async {
   final image = File("test.png");
 
   //Transfrom the Image and get the Result
-  final result = await det.applySobelOperator(image);
+  final result = await det.applySobelOnFile(image);
 
   //Write result back to the original File
   image.writeAsBytes(img.encodePng(result));

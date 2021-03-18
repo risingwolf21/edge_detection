@@ -3,22 +3,9 @@ library edge_detection;
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
-import 'package:image_edge_detection/constants.dart';
+import 'package:flutter/painting.dart';
 import 'package:image_edge_detection/utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:image/image.dart' as img;
-
-///Apply Sobel-Operator on [File]
-Future<img.Image> applySobelOperator(File file) =>
-    applyFilterOnFile(file, sobelx, sobely);
-
-///Apply Laplace-Operator on [File]
-Future<img.Image> applyLaplaceOperator(File file) =>
-    applyFilterOnFile(file, laplacex, laplacey);
-
-///Apply Scharr-Operator on [File]
-Future<img.Image> applyScharrOperator(File file) =>
-    applyFilterOnFile(file, scharrx, scharry);
 
 Future<img.Image> applyFilterOnFile(
     File file, List<List<int>> sx, List<List<int>> sy) async {
@@ -29,6 +16,14 @@ Future<img.Image> applyFilterOnFile(
   var data = await image.toByteData();
   var uint32 = data.buffer.asUint32List();
 
+  return applyFilterOnUint32List(uint32, width, height, sx, sy);
+}
+
+Future<img.Image> applyFilterOnImage(
+    img.Image image, List<List<int>> sx, List<List<int>> sy) async {
+  var uint32 = image.data;
+  var width = image.width;
+  var height = image.height;
   return applyFilterOnUint32List(uint32, width, height, sx, sy);
 }
 

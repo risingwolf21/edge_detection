@@ -4,5 +4,10 @@ class RGBA {
   final int b;
   final int a;
 
-  const RGBA({this.r, this.g, this.b, this.a = 255});
+  const RGBA({
+    this.r,
+    this.g,
+    this.b,
+    this.a = 255,
+  });
 }

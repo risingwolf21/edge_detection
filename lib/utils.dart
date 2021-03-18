@@ -21,19 +21,19 @@ int clamp(int x, int a, int b) => x.clamp(a, b).toInt();
 int clamp255(int x) => x.clamp(0, 255).toInt();
 
 RGBA extractChannel(int p) => new RGBA(
-  b: p & 255,
-  g: (p >> 8) & 255,
-  r: (p >> 16) & 255,
-  a: (p >> 24) & 255,
-);
+      b: p & 255,
+      g: (p >> 8) & 255,
+      r: (p >> 16) & 255,
+      a: (p >> 24) & 255,
+    );
 
 grayscale(Uint32List image) {
-    return image
-        .map(extractChannel)
-        .map((e) => getLuminanceRgb(e.r, e.g, e.b))
-        .toList();
-  }
+  return image
+      .map(extractChannel)
+      .map((e) => getLuminanceRgb(e.r, e.g, e.b))
+      .toList();
+}
 
 int getPixel(List<int> bytes, int x, int y, int width) {
-    return bytes[(y + x * width)];
-  }
+  return bytes[(y + x * width)];
+}
