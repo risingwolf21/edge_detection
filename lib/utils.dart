@@ -1,8 +1,5 @@
-
-import 'dart:ffi';
 import 'dart:typed_data';
-
-import 'package:edge_detection/rgba.dart';
+import 'package:image_edge_detection/rgba.dart';
 
 /// Returns the luminance (grayscale) value of the color.
 int getLuminanceRgb(int r, int g, int b) =>

@@ -1,8 +1,7 @@
-name: edge_detection
-description: Edgedetection for flutter
-version: 0.0.1
-author:
-homepage:
+name: image_edge_detection
+description: Applies mathematic Operators on Images, like the Sobel,-Scharr,-Laplace Operator, to detect edges on an image 
+version: 0.0.2
+homepage: https://github.com/risingwolf21/edge_detection
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -11,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image: 2.1.19
+  image: ^2.1.19
 
 dev_dependencies:
   flutter_test:

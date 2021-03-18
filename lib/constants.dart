@@ -1,31 +1,31 @@
-var sobel_x = [
+var sobelx = [
   [1, 0, -1],
   [2, 0, -2],
   [1, 0, -1]
 ];
-var sobel_y = [
+var sobely = [
   [1, 2, 1],
   [0, 0, 0],
   [-1, -2, -1]
 ];
 
-var laplace_x = [
+var laplacex = [
   [1, 1, 1],
   [1, -8, 1],
   [1, 1, 1]
 ];
-var laplace_y = [
+var laplacey = [
   [1, 1, 1],
   [1, -8, 1],
   [1, 1, 1]
 ];
 
-var scharr_x = [
+var scharrx = [
   [47, 0, -47],
   [162, 0, -162],
   [47, 0, -47]
 ];
-var scharr_y = [
+var scharry = [
   [47, 162, 47],
   [0, 0, 0],
   [-47, -162, -47]

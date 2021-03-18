@@ -1,5 +1,5 @@
-import 'package:edge_detection/rgba.dart';
-import 'package:edge_detection/utils.dart';
+import 'package:image_edge_detection/rgba.dart';
+import 'package:image_edge_detection/utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
