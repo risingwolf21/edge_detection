@@ -1,6 +1,6 @@
 name: image_edge_detection
 description: Applies mathematic Operators on Images, like the Sobel,-Scharr,-Laplace Operator, to detect edges on an image 
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/risingwolf21/edge_detection
 
 environment:
