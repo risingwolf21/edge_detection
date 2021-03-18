@@ -15,7 +15,7 @@ void main() async {
   var file = File("temp.png");
   
   img.Image edgeDetected = EdgeDetector().applySobelOperator(file);
-  file.writeAsBytes(img.encodePng(image));
+  file.writeAsBytes(img.encodePng(edgeDetected));
   
   // display the changed Image as Widget:
   // Image.file(file);
