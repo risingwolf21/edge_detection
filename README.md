@@ -10,6 +10,7 @@ functionality.
 ```dart
 import 'dart:io';
 import 'package:image/image.dart' as img;
+import 'package:image_edge_detection/functions.dart';
 
 void main() async {
 
