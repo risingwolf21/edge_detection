@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-import 'package:image_edge_detection/rgba.dart';
+import './rgba.dart';
 
 /// Returns the luminance (grayscale) value of the color.
 int getLuminanceRgb(int r, int g, int b) =>
@@ -20,7 +20,7 @@ int clamp(int x, int a, int b) => x.clamp(a, b).toInt();
 /// Clamp [x] to [0, 255]
 int clamp255(int x) => x.clamp(0, 255).toInt();
 
-RGBA extractChannel(int p) => new RGBA(
+RGBA extractChannel(int p) => RGBA(
       b: p & 255,
       g: (p >> 8) & 255,
       r: (p >> 16) & 255,
@@ -35,5 +35,5 @@ grayscale(Uint32List image) {
 }
 
 int getPixel(List<int> bytes, int x, int y, int width) {
-  return bytes[(y + x * width)];
+  return bytes[(x + y * width)];
 }
