@@ -6,3 +6,7 @@
 
 * Added example file, improved pub points for pub.dev
 
+## main - 
+
+* Use `image: ^3.2.0`, `flutter: ">=2.8.0"`
+* Fixed out of bounds error with non square images
