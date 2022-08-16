@@ -4,8 +4,9 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:flutter/painting.dart';
-import 'package:image_edge_detection/utils.dart';
 import 'package:image/image.dart' as img;
+
+import './utils.dart';
 
 Future<img.Image> applyFilterOnFile(
     File file, List<List<int>> sx, List<List<int>> sy) async {
@@ -14,7 +15,9 @@ Future<img.Image> applyFilterOnFile(
   var width = image.width;
   var height = image.height;
   var data = await image.toByteData();
-  var uint32 = data.buffer.asUint32List();
+  var uint32 = data != null
+      ? data.buffer.asUint32List()
+      : Uint32List.fromList(List.empty());
 
   return applyFilterOnUint32List(uint32, width, height, sx, sy);
 }
@@ -29,18 +32,21 @@ Future<img.Image> applyFilterOnImage(
 
 Future<img.Image> applyFilterOnUint32List(Uint32List image, int width,
     int height, List<List<int>> sx, List<List<int>> sy) async {
-  assert(sx.length == sy.length && sx.length != 0);
-  assert(sx[0].length == sy[0].length && sx[0].length != 0);
+  assert(sx.length == sy.length && sx.isNotEmpty);
+  assert(sx[0].length == sy[0].length && sx[0].isNotEmpty);
 
   List<int> bytes = grayscale(image);
 
-  for (int i = 0; i < width - 2; i++) {
-    for (int j = 0; j < height - 2; j++) {
+  final matrixXLen = sx[0].length;
+  final matrixYLen = sx.length;
+
+  for (int w = 0; w < width - matrixXLen; w++) {
+    for (int h = 0; h < height - matrixYLen; h++) {
       var gx = 0;
       var gy = 0;
-      for (int x = 0; x < sx.length; x++) {
-        for (int y = 0; y < sx[0].length; y++) {
-          var pixel = getPixel(bytes, i + y, j + x, width);
+      for (int x = 0; x < matrixXLen; x++) {
+        for (int y = 0; y < matrixYLen; y++) {
+          var pixel = getPixel(bytes, w + y, h + x, width);
           gx += sx[x][y] * pixel;
           gy += sy[x][y] * pixel;
         }
@@ -48,13 +54,14 @@ Future<img.Image> applyFilterOnUint32List(Uint32List image, int width,
       try {
         int g = sqrt((gx * gx) + (gy * gy)).floor();
         var color = getColor(g, g, g);
-        bytes[(j + i * width)] = color;
+        bytes[(w + h * width)] = color;
       } on UnsupportedError {
         // on unsupported error do not set the value of the current pixel
         // and keep the grayscale
       }
     }
   }
+
   return img.Image.fromBytes(width, height, bytes,
       format: img.Format.luminance);
 }

@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:image_edge_detection/constants.dart';
-import 'package:image_edge_detection/edge_detection.dart';
+import './constants.dart';
+import './edge_detection.dart';
 import 'package:image/image.dart' as img;
 
 ///Apply Sobel-Operator on [File]

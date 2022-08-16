@@ -5,9 +5,9 @@ class RGBA {
   final int a;
 
   const RGBA({
-    this.r,
-    this.g,
-    this.b,
+    required this.r,
+    required this.g,
+    required this.b,
     this.a = 255,
   });
 }
